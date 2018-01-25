@@ -7,47 +7,58 @@
         <h1>Adventure Game v1.0</h1>
         <p>Made by: Cameron Duncan</p>
         <script>
-            /*alert("Robot: ''Ding fries are done!''");
-            confirm("Are you going to eat those fries?");
-            prompt("How did you like your fries?");
-            alert("Robot: 'Alright, that would be $7.25'");
-            confirm("Robot: 'Would you like more?'");
-            alert("Robot: 'Alright here they are.'");
-            confirm("How about those fries?");
-            prompt("How do they taste?");
-            prompt("How would you like to pay your bill of $14.50?");*/
+            Start();
             
-            var favColor = prompt("What is your favorite color?").toLowerCase();
-            
-            if(favColor == "blue"){
-                alert("The sky is blue!");
+            function Start(){
+                
+                var playerName = prompt("What is your name traveller?");
+                
+                alert("Welcome " + playerName + ", to the Breach. Otherwise known as Garloop.");
+                
+                var startGame = confirm("Are you ready to adventure into the unknown?");
+                
+                if(startGame){
+                    Village();
+                }
+                else{
+                    alert("Goodbye.");
+                }
+                
             }
-            else if(favColor == "red"){
-                alert("Red is the color of love.");
+ 
+            function Village(){
+                var village = prompt("By truck, you arrive in a small town on the edge of the Breach. There is a forge, hearth, shop, stables and several tents within the surrounding area. Where would you like to go?").toLowerCase();
+                
+                switch(village){
+                        
+                    case "forge":
+                        alert("The figure running the forge is a large, buff and tall man. While trying to forge a blade, he misses his strike ever so slightly and lets free an inaudible yet discomforting shout. You back away, hoping your presence won't aggravate him further.");
+                        Village();
+                    break;
+                    case "hearth":
+                        alert("Upon entering the hearth, the Hearthkeeper greets you, ''Howdy friend and welcome to Garloop. I'm the owner of this here establishment, what can I do you for?'' Rent a room. Buy rations. Sit within the warmth of the large central fire.");
+                        Village();
+                    break;
+                    case "shop":
+                        alert("You try to enter the shop but it is currently closed.");
+                        Village();
+                    break;
+                    case "stable":
+                        alert("The stable master notifies you of the struggle that the smith is currently in. Will you offer a hand?");
+                        Village();
+                    break;
+                    case "tents":
+                        alert("You attempt to walk down the path littered with tents on either sides. One of the few guard notices you and demands you turn back, as this is trespassing.");
+                        Village();
+                    break;
+                    case "exit":
+                        alert("Then leave, coward. This is no place for the likes of you..");
+                    break;
+                    default:
+                        alert("I do not understand " + village);
+                    break;
+                }
             }
-            else if(favColor == "green"){
-                alert("Green is the color of grass.");
-            }
-            else if(favColor == "yellow"){
-                alert("Yellow is the color of sun.");
-            }
-            else if(favColor == "orange"){
-                alert("Orange is the color of citrus.");
-            }
-            else if(favColor == "purple"){
-                alert("Purple is the color of flowers.");
-            }
-            else if(favColor == "black"){
-                alert("Black like your soul.");
-            }
-            else if(favColor == "violet"){
-                alert("Violet? Why Violet?.");
-            }
-            else{
-                alert("Did you, or did you not graduate preschool?");
-            }
-            
-            
         </script>
     </body>
 </html>
