@@ -7,6 +7,12 @@
         <h1>Adventure Game v1.0</h1>
         <p>Made by: Cameron Duncan</p>
         <script>
+            //Inventory System
+            var inventory = {
+                knife:0,
+                bow:0,
+            }
+            
             Start();
             
             function Start(){
@@ -27,7 +33,7 @@
             }
  
             function Village(){
-                var village = prompt("By truck, you arrive in a small town on the edge of the Breach. There is a forge, hearth, shop, stables and several tents within the surrounding area. Where would you like to go?").toLowerCase();
+                var village = prompt("After coming to your senses, you arrive by truck in a small town on the edge of the Breach. There is a forge, hearth, shop, stables and several tents within the surrounding area. Where would you like to go?").toLowerCase();
                 
                 switch(village){
                         
@@ -37,13 +43,14 @@
                     break;
                     case "hearth":
                         alert("Upon entering the hearth, the Hearthkeeper greets you, ''Howdy friend and welcome to Garloop. I'm the owner of this here establishment, what can I do you for?'' Rent a room. Buy rations. Sit within the warmth of the large central fire.");
+                        var hearthQuestion = prompt("Rent a room, Buy Rations, Sit near fire.")
                         Village();
                     break;
                     case "shop":
                         alert("You try to enter the shop but it is currently closed. Come back later.");
                         Village();
                     break;
-                    case "stable":
+                    case "stables":
                         alert("The stable master notifies you of the struggle that the smith is currently in. Will you offer a hand?");
                         Village();
                     break;
@@ -52,10 +59,11 @@
                         Village();
                     break;
                     case "exit":
-                        alert("Then leave, coward. This is no place for the likes of you..");
+                        alert("You exit the town.");
                     break;
                     default:
-                        alert("I do not understand " + village);
+                        alert(village + " is not located within the city.");
+                        Village();
                     break;
                 }
             }
