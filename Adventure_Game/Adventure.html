@@ -9,17 +9,23 @@
         <script>
             //Inventory System
             var inventory = {
+                ammobox:0,
+                arrows:5,
+                bow:1,
+                cash:20,
                 knife:0,
-                bow:0,
+                rations:1,
+                rifle:0,
+                
             }
             
             Start();
             
             function Start(){
                 
-                var playerName = prompt("What is your name traveller?");
+                var playerName = prompt("What is your name survivor?");
                 
-                alert("Welcome " + playerName + ", to the Breach. Otherwise known as Garloop.");
+                alert("Welcome " + playerName + ", to the Breach. Otherwise known as Death Valley.");
                 
                 var startGame = confirm("Are you ready to adventure into the unknown?");
                 
@@ -31,20 +37,48 @@
                 }
                 
             }
+            
+            function invCheck(){
+                alert("Inside your bag, you have:" + "\n Ammo: "+inventory.ammobox+"\n Arrows: "+inventory.arrows+"\n Bow(s):"+inventory.bow+"\n $"+inventory.cash+"\n Knifes: "+inventory.knife+"\n Food: "+inventory.rations+"\n Rifles: "+inventory.rifle);
+            }
  
             function Village(){
-                var village = prompt("After coming to your senses, you arrive by truck in a small town on the edge of the Breach. There is a forge, hearth, shop, stables and several tents within the surrounding area. Where would you like to go?").toLowerCase();
+                var village = prompt("After coming to your senses, you arrive by truck in a small town on the edge of the Breach. You see your bag of personal belongings. There is also a forge, hearth, shop, stables and several tents within the surrounding area. Where would you like to go? Hint: Best to check your bag and make sure nothing is missing.").toLowerCase();
                 
                 switch(village){
-                        
+                    case "bag" || "bag of personal belongings" || "inventory":
+                        alert("You check your inventory.");
+                        invCheck();
+                        Village();
+                    break;
                     case "forge":
-                        alert("The figure running the forge is a large, buff and tall man. While trying to forge a blade, he misses his strike ever so slightly and lets free an inaudible yet discomforting shout. You back away, hoping your presence won't aggravate him further.");
+                        alert("Running the forge is a large, built figure. Welcome to my shop Adventurer, how may I help you?.");
+                        var bsPrompt = prompt("Would you like to, \n - Buy a Knife: $10, \n - Buy Arrows(5): $5, \n - Buy a Bow: $10");
                         Village();
                     break;
                     case "hearth":
-                        alert("Upon entering the hearth, the Hearthkeeper greets you, ''Howdy friend and welcome to Garloop. I'm the owner of this here establishment, what can I do you for?'' Rent a room. Buy rations. Sit within the warmth of the large central fire.");
-                        var hearthQuestion = prompt("Rent a room, Buy Rations, Sit near fire.")
-                        Village();
+                        alert("Upon entering the hearth, the Hearthkeeper greets you, ''Howdy friend and welcome to the Breach. I'm the owner of this here establishment, what can I do you for?''");
+                        var hearthQuestion = prompt("Would you like to, \n - Rent a room: $5 \n - Buy Rations: $3 \n - Sit near fire \n \n Leave?").toLowerCase();
+                        if(hearthQuestion == "rent a room" || hearthQuestion == "room" || hearthquestion == "rent room" && inventory.cash >= 5){
+                            alert("You spend one night at the Hearth.");
+                            inventory.cash = inventory.cash - 5;
+                            alert("You have $" + inventory.cash + " remaining.");
+                        }
+                        if(hearthQuestion == "buy rations" || hearthQuestion == "rations" || hearthQuestion == "food" && inventory.cash >= 3){
+                            alert("You bought some food for your travels.");
+                            inventory.rations ++;
+                            alert("You have $" + inventory.cash + " remaining.");
+                            inventory.cash = inventory.cash - 3;
+                        }
+                        if(hearthQuestion == "sit by fire" || hearthQuestion == "fire"){
+                            alert("You sit by the fire for a few minutes before returning to town.")
+                        }
+                        if(hearthQuestion == "leave"){
+                            Village();
+                        }
+                        else{
+                            Village();
+                        }
                     break;
                     case "shop":
                         alert("You try to enter the shop but it is currently closed. Come back later.");
