@@ -38,15 +38,17 @@
                 
             }
             
+            //Inventory Function
             function invCheck(){
-                alert("Inside your bag, you have:" + "\n Ammo: "+inventory.ammobox+"\n Arrows: "+inventory.arrows+"\n Bow(s):"+inventory.bow+"\n $"+inventory.cash+"\n Knifes: "+inventory.knife+"\n Food: "+inventory.rations+"\n Rifles: "+inventory.rifle);
+                alert("Inside your bag, you have:" + "\n Ammo: "+inventory.ammobox+"\n Arrows: "+inventory.arrows+"\n Bow(s):"+inventory.bow+"\n Currency: $"+inventory.cash+"\n Knife(s): "+inventory.knife+"\n Food: "+inventory.rations+"\n Rifles: "+inventory.rifle);
             }
- 
+            
+            //Village Function
             function Village(){
-                var village = prompt("After coming to your senses, you arrive by truck in a small town on the edge of the Breach. You see your bag of personal belongings. There is also a forge, hearth, shop, stables and several tents within the surrounding area. Where would you like to go? Hint: Best to check your bag and make sure nothing is missing.").toLowerCase();
+                var village = prompt("You arrive by truck in a small town on the edge of the Breach. Within the passenger seat of the truck, you see your 'bag' of personal belongings. Outside of the truck, there is a 'forge', 'hearth', 'shop', 'stables' and several 'tents' within the surrounding area. Where would you like to go? Hint: Best to check your bag and make sure nothing is missing.\n \n If you wish, you can 'exit' the town and explore. \n \n Leave").toLowerCase();
                 
                 switch(village){
-                    case "bag" || "bag of personal belongings" || "inventory":
+                    case "bag":
                         alert("You check your inventory.");
                         invCheck();
                         Village();
@@ -58,34 +60,47 @@
                     break;
                     case "hearth":
                         alert("Upon entering the hearth, the Hearthkeeper greets you, ''Howdy friend and welcome to the Breach. I'm the owner of this here establishment, what can I do you for?''");
-                        var hearthQuestion = prompt("Would you like to, \n - Rent a room: $5 \n - Buy Rations: $3 \n - Sit near fire \n \n Leave?").toLowerCase();
-                        if(hearthQuestion == "rent a room" || hearthQuestion == "room" || hearthquestion == "rent room" && inventory.cash >= 5){
-                            alert("You spend one night at the Hearth.");
-                            inventory.cash = inventory.cash - 5;
-                            alert("You have $" + inventory.cash + " remaining.");
+                        
+                        Hearthh();
+                        
+                        //Hearth Questioneer Function
+                        function Hearthh(){
+                        var hearthquestion = prompt("Would you like to, \n - Rent a room: $5 \n - Buy Food: $3 \n - Sit by fire \n \n Leave?").toLowerCase();
+                        
+                        switch(hearthquestion){
+                            case "rent a room":
+                                alert("You spend one night at the Hearth for $5.");
+                                inventory.cash = inventory.cash - 5;
+                                alert("You have $" + inventory.cash + " remaining.");
+                                Hearthh();
+                            break;
+                            case "buy food":
+                                inventory.rations ++;
+                                alert("You browse the food containers and purchase an item for $3.");
+                                inventory.cash = inventory.cash - 3;
+                                alert("You have $" + inventory.cash + " remaining.");
+                                Hearthh();
+                            break;
+                            case "sit by fire":
+                                alert("You sit by the large central fire and gaze at the orange flames. For a brief moment you are lost, watching every movement the fire makes, enthralled by the its glistening dance.");
+                                Hearthh();
+                            break;
+                            case "leave":
+                                Village();
+                            break;
+                            default:
+                                alert("'I am sorry, but I cannot help you with " + hearthquestion + ".'");
+                                Hearthh();
+                            break;
                         }
-                        if(hearthQuestion == "buy rations" || hearthQuestion == "rations" || hearthQuestion == "food" && inventory.cash >= 3){
-                            alert("You bought some food for your travels.");
-                            inventory.rations ++;
-                            alert("You have $" + inventory.cash + " remaining.");
-                            inventory.cash = inventory.cash - 3;
-                        }
-                        if(hearthQuestion == "sit by fire" || hearthQuestion == "fire"){
-                            alert("You sit by the fire for a few minutes before returning to town.")
-                        }
-                        if(hearthQuestion == "leave"){
-                            Village();
-                        }
-                        else{
-                            Village();
-                        }
+                    }
                     break;
                     case "shop":
-                        alert("You try to enter the shop but it is currently closed. Come back later.");
+                        alert("You try to enter the shop but it is currently closed. A sign reads 'Storeclerk MIA - Visit the forge for any weapon needs.'.");
                         Village();
                     break;
                     case "stables":
-                        alert("The stable master notifies you of the struggle that the smith is currently in. Will you offer a hand?");
+                        alert("The stable master notifies you of the towns gas shortage and offers you the reigns to a horse.");
                         Village();
                     break;
                     case "tents":
@@ -93,7 +108,7 @@
                         Village();
                     break;
                     case "exit":
-                        alert("You exit the town.");
+                        alert("Now leaving Death Valley. Thanks for visiting.");
                     break;
                     default:
                         alert(village + " is not located within the city.");
