@@ -13,10 +13,11 @@
                 arrows:5,
                 bow:1,
                 cash:20,
+                flashlight:0,
                 knife:0,
+                pistol:0,
                 rations:1,
                 rifle:0,
-                
             }
             
             Start();
@@ -38,14 +39,36 @@
                 
             }
             
+            //Mr. Powells Code
+            //var invList = function()
+            /*{
+                alert("Inside your bag, you have:" + 
+                      "\n Ammo: " + inventory.ammobox +
+                      "\n Arrows: " + inventory.arrows +
+                      "\n Bow(s):" + inventory.bow+
+                      "\n Currency: $" + inventory.cash +
+                      "\n Knife(s): " + inventory.knife +
+                      "\n Food: " + inventory.rations +
+                      "\n Rifles: " + inventory.rifle);
+            }*/
+            
+            
             //Inventory Function
             function invCheck(){
-                alert("Inside your bag, you have:" + "\n Ammo: "+inventory.ammobox+"\n Arrows: "+inventory.arrows+"\n Bow(s):"+inventory.bow+"\n Currency: $"+inventory.cash+"\n Knife(s): "+inventory.knife+"\n Food: "+inventory.rations+"\n Rifles: "+inventory.rifle);
+                alert("Inside your bag, you have:" + 
+                      "\n Ammo: " + inventory.ammobox +
+                      "\n Arrows: " + inventory.arrows +
+                      "\n Bow(s):" + inventory.bow+
+                      "\n Currency: $" + inventory.cash +
+                      "\n Knife(s): " + inventory.knife +
+                      "\n Food: " + inventory.rations +
+                      "\n Rifles: " + inventory.rifle + 
+                      "\n Hanguns: " + inventory.pistol);
             }
             
             //Village Function
             function Village(){
-                var village = prompt("You arrive by truck in a small town on the edge of the Breach. Within the passenger seat of the truck, you see your 'bag' of personal belongings. Outside of the truck, there is a 'forge', 'hearth', 'shop', 'stables' and several 'tents' within the surrounding area. Where would you like to go? Hint: Best to check your bag and make sure nothing is missing.\n \n If you wish, you can 'exit' the town and explore. \n \n Leave").toLowerCase();
+                var village = prompt("You arrive by truck in a small town on the edge of the Breach. Within the passenger seat of the truck, you see your 'bag' of personal belongings. Outside of the truck, there is a 'forge', 'hearth', 'shop', 'stables' and several 'tents' within the surrounding area. Where would you like to go? Hint: Best to check your bag and make sure nothing is missing. \n \n Explore \n \n Leave").toLowerCase();
                 
                 switch(village){
                     case "bag":
@@ -62,7 +85,6 @@
                         alert("Upon entering the hearth, the Hearthkeeper greets you, ''Howdy friend and welcome to the Breach. I'm the owner of this here establishment, what can I do you for?''");
                         
                         Hearthh();
-                        
                         //Hearth Questioneer Function
                         function Hearthh(){
                         var hearthquestion = prompt("Would you like to, \n - Rent a room: $5 \n - Buy Food: $3 \n - Sit by fire \n \n Leave?").toLowerCase();
@@ -107,7 +129,10 @@
                         alert("You attempt to walk down the path littered with tents on either sides. One of the few guard notices you and demands you turn back, as this is trespassing.");
                         Village();
                     break;
-                    case "exit":
+                    case "explore":
+                        CityWall();
+                    break;
+                    case "leave":
                         alert("Now leaving Death Valley. Thanks for visiting.");
                     break;
                     default:
@@ -116,6 +141,41 @@
                     break;
                 }
             }
+            
+            /*
+            function CityWall(){
+                var citywallprompt = prompt("As you close the city gate, you are greeted by a chilling wind. You cannot stay out here without regaining your strength for long. \n \n Straight ahead, you see an abandoned shack. On both your 'left' and 'right' are pathways.  You can 'return' to the city, travel a path, or explore the 'shack'.").toLowerCase;
+                
+                switch(citywallprompt){
+                    case "return":
+                        Village();
+                    break;
+                    case "left":
+                        alert("You cannot head this way due to the boulder blocking your path. Nor would you want to anyway after hearing the wails of the dead soar around it. Not without a high caliber weapon anyway.");
+                        CityWall();
+                    break;
+                    case "right":
+                        alert("One of the guards ontop of the wall catches you before you head down the path and notifies you that it only gets darker and colder from here. You dare not travel further without a source of heat or light.");
+                        CityWall();
+                    break;
+                    case "shack":
+                        alert("You enter the shack and sigh in relief. You are no longer cold, but it is quite dark. You search the house for any goods and see a stockpile of goods. \n \n With greed, you take some bullets, a handgun, a knife, and a flashlight. 'I don't want to take everything from here but I can if I leave $5 each trip to make up for borrowing this fellows gear.");
+                        
+                        inventory.cash = inventory.cash - 5;
+                        inventory.flashlight++;
+                        inventory.knife++;
+                        inventory.pistol++;
+                        inventory.ammobox = inventory.ammobox + 3;
+                        CityWall();
+                    break;
+                    default:
+                        alert("From what is within view, you cannot seem to find " + citywallprompt + ".");
+                        CityWall();
+                    break;
+                }
+            }
+            */
+            
         </script>
     </body>
 </html>
