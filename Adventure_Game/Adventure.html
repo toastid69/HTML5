@@ -68,17 +68,18 @@
             
             //Village Function
             function Village(){
-                var village = prompt("You arrive by truck in a small town on the edge of the Breach. Within the passenger seat of the truck, you see your 'bag' of personal belongings. Outside of the truck, there is a 'forge', 'hearth', 'shop', 'stables' and several 'tents' within the surrounding area. Where would you like to go? Hint: Best to check your bag and make sure nothing is missing. \n \n Explore \n \n Leave").toLowerCase();
+                var village = prompt("You arrive by truck in a small town on the edge of the Breach. Within the passenger seat of the truck, you see your 'bag' of personal belongings. Outside of the truck, there is a 'forge', 'hearth', 'shop', 'stables' and several 'tents' within the surrounding area. Where would you like to go? \n \n Explore \n \n Leave").toLowerCase();
                 
                 switch(village){
-                    case "bag":
+                    case "inventory":
                         alert("You check your inventory.");
                         invCheck();
                         Village();
                     break;
                     case "forge":
                         alert("Running the forge is a large, built figure. Welcome to my shop Adventurer, how may I help you?.");
-                        var bsPrompt = prompt("Would you like to, \n - Buy a Knife: $10, \n - Buy Arrows(5): $5, \n - Buy a Bow: $10");
+                        var bsprompt = prompt("Would you like to, \n - Buy a Knife: $10, \n - Buy Arrows(5): $5, \n - Buy a Bow: $10").toLowerCase();
+                            if(bsprompt == knife || buy knife)
                         Village();
                     break;
                     case "hearth":
@@ -126,7 +127,7 @@
                         Village();
                     break;
                     case "tents":
-                        alert("You attempt to walk down the path littered with tents on either sides. One of the few guard notices you and demands you turn back, as this is trespassing.");
+                        alert("You attempt to walk down the path littered with tents on both sides. One of the few guard notices you and demands you turn back, as this is trespassing.");
                         Village();
                     break;
                     case "explore":
@@ -144,21 +145,21 @@
             
             /*
             function CityWall(){
-                var citywallprompt = prompt("As you close the city gate, you are greeted by a chilling wind. You cannot stay out here without regaining your strength for long. \n \n Straight ahead, you see an abandoned shack. On both your 'left' and 'right' are pathways.  You can 'return' to the city, travel a path, or explore the 'shack'.").toLowerCase;
+                var citywall = prompt("As you close the city gate, you are greeted by a chilling wind. You cannot stay out here without regaining your strength for long. \n \n Straight ahead, you see an abandoned shack. On both your left and right are pathways.  You can 'return' to the city, travel a path, or explore the shack.").toLowerCase;
                 
-                switch(citywallprompt){
+                switch(citywall){
                     case "return":
                         Village();
                     break;
-                    case "left":
-                        alert("You cannot head this way due to the boulder blocking your path. Nor would you want to anyway after hearing the wails of the dead soar around it. Not without a high caliber weapon anyway.");
+                    case "go left":
+                        alert("");
                         CityWall();
                     break;
-                    case "right":
+                    case "go right":
                         alert("One of the guards ontop of the wall catches you before you head down the path and notifies you that it only gets darker and colder from here. You dare not travel further without a source of heat or light.");
                         CityWall();
                     break;
-                    case "shack":
+                    case "explore shack":
                         alert("You enter the shack and sigh in relief. You are no longer cold, but it is quite dark. You search the house for any goods and see a stockpile of goods. \n \n With greed, you take some bullets, a handgun, a knife, and a flashlight. 'I don't want to take everything from here but I can if I leave $5 each trip to make up for borrowing this fellows gear.");
                         
                         inventory.cash = inventory.cash - 5;
@@ -169,7 +170,7 @@
                         CityWall();
                     break;
                     default:
-                        alert("From what is within view, you cannot seem to find " + citywallprompt + ".");
+                        alert("From what is within view, you cannot seem to find " + citywall\ + ".");
                         CityWall();
                     break;
                 }

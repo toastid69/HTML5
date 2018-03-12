@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intitial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+        
+        <title>My Contacts</title>
+    
+    </head>
+        
+        <body>
+        
+            <div class="container">
+            
+                <h1 class="center-align">
+                    My Contacts
+                </h1>
+                
+                <input type="text" id="filterInput" placeholder="Search names...">
+                
+                <ul id="names" class="collection with-header">
+                    <li class="collection-header">
+                        <h5>A</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Abigail</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Alek</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Alex</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Alix</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Amanda</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Ashton</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Austin</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>B</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Bo</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Brady</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Brian</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Brooklyn</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>C</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Carol</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Colby</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Creighton</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>E</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Emma</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Enoch</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Ethan</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>J</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Jakob</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Jerri</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Jessy</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">John</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Jonah</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Jordan</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Josh</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>K</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Kennedy</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Kyle</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>L</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Logan</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>M</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Mason</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Melissa</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Mistie</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>S</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Shawn</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Spencer</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Sterling</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Steve</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Sydney</a>
+                    </li>
+                    <li class="collection-header">
+                        <h5>T</h5>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Travis</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="#">Tony</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <script>
+                //Get Input Element
+                let filterInput = document.getElementById('filterInput');
+                //Add Event Listener
+                filterInput.addEventListener('keyup', filterNames);
+                
+                function filterNames(){
+                    //Get Value of Input
+                    let filerValue = document.getElementById('filterInput').value.toUpperCase();
+                    
+                    //Get names ul
+                    let ul = document.getElementById('names');
+                    //Get lis from ul
+                    let li = ul.querySelectorAll('li.collection-item');
+                    
+                    //loop through collection-item lis
+                    for(let i = 0;i < li.length;i++){
+                        let a = li[i].getElementsByTagName('a')[0];
+                        //If Matched
+                        if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1){
+                            li[i].style.display = '';
+                        } else {
+                            li[i].style.display = 'none';
+                        }
+                    }
+                }
+            </script>
+    </body>
+</html>
