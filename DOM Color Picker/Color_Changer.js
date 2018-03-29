@@ -14,7 +14,7 @@ var preview = document.getElementById("preview");
 //THIS SETS THE PREVIEW BOX COLOR IN THE MODAL TO CURRENTLY SELECTED COLOR
 function Preview() {
     //THIS GETS THE CURRENTLY SELECTED COLOR'S VALUE AND SETS IT EQUAL TO COLOR
-    color = document.querySelector('input[name="colors]:checked').value;
+	color = document.querySelector('input[name="colors"]:checked').value;
     //LOG WHAT COLOR
     console.log("The color is " + color);
     //CHANGE PREVIEW COLOR
