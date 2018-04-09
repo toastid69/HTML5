@@ -33,8 +33,7 @@
         var brickPadding=10;
         var brickOffsetTop = 30;
         var brickOffsetLeft = 30;
-        document.addEventListener("keydown", keyDownHandler, false);
-        document.addEventListener("keyup", keyUpHandler, false);
+        var score = 0;
         
         var bricks = [];
         for(c=0; c<brickColumnCount; c++) {
@@ -44,6 +43,8 @@
             }
         }
                 
+        document.addEventListener("keydown", keyDownHandler, false);
+        document.addEventListener("keyup", keyUpHandler, false);
         
         function keyDownHandler(e) {
             if(e.keyCode == 39) {
@@ -93,6 +94,11 @@
                     }
                 }
             }
+        }
+        function drawScore() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Score: "+score, 8, 20);
         }
         
         function collisionDetection() {
